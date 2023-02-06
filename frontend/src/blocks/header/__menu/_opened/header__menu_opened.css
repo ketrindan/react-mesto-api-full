@@ -1,0 +1,6 @@
+@media screen and (max-width: 767px) {
+  .header__menu_opened {
+    height: 142px;
+    border-bottom: 1px solid rgba(84, 84, 84, 0.7);
+  }
+}

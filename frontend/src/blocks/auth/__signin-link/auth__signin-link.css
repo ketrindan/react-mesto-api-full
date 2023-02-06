@@ -1,0 +1,16 @@
+.auth__signin-link {
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  color: #FFFFFF;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+.auth__signin-link:hover {
+  opacity: 0.6;
+}

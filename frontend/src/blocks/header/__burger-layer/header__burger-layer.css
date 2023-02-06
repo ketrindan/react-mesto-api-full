@@ -1,0 +1,32 @@
+.header__burger-layer {
+  width: 100%;
+  height: 3px;
+  background: #FFFFFF;
+  margin-bottom: 5px;
+  position: relative;
+  transition: 0.4s ease;
+}
+
+.header__burger-layer:last-of-type {
+  margin-bottom: 0;
+}
+
+.header__burger-btn_transformed .header__burger-layer:nth-of-type(2) {
+  opacity: 0; 
+  margin-bottom: 0;
+}
+
+.header__burger-btn_transformed .header__burger-layer:nth-of-type(1) {
+  transform: rotate(45deg) scale(1.1);
+  margin-bottom: 0;
+  top: 6px;
+}
+
+.header__burger-btn_transformed .header__burger-layer:nth-of-type(3) {
+  transform: rotate(-45deg) scale(1.1);
+}
+
+.header__burger-btn_transformed {
+  margin-right: 10px;
+  bottom: 6px;
+}

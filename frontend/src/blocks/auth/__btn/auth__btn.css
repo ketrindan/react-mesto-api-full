@@ -1,0 +1,20 @@
+.auth__btn {
+  width: 100%;
+  height: 50px;
+  background: #FFFFFF;
+  border-radius: 2px;
+  text-align: center;
+  color: #000000;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+@media screen and (max-width: 425px) {
+  .auth__btn {
+    font-size: 16px;
+    line-height: 19px;
+  }
+}
