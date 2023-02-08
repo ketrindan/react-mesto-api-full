@@ -13,6 +13,7 @@ const {
 const NotFoundError = require('./errors/NotFoundError');
 const errorHandler = require('./middlewares/errorHandler');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
+const cors = require('./middlewares/cors');
 
 const { PORT = 3000, MONGODB_PATH = 'mongodb://127.0.0.1:27017/mestodb' } = process.env;
 
@@ -42,6 +43,8 @@ app.use('/cards', cardRouter);
 app.use((req, res, next) => {
   next(new NotFoundError('Страница не найдена'));
 });
+
+app.use(cors);
 
 app.use(errorLogger);
 
