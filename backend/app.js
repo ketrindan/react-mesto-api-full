@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const mongoose = require('mongoose');
 const { errors } = require('celebrate');
@@ -13,13 +15,14 @@ const {
 const NotFoundError = require('./errors/NotFoundError');
 const errorHandler = require('./middlewares/errorHandler');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-const cors = require('./middlewares/cors');
+
+const allowedCors = [
+  'https://mesto.ketrindan.nomoredomainsclub.ru',
+  'http://mesto.ketrindan.nomoredomainsclub.ru',
+  'localhost:3000',
+];
 
 const { PORT = 3000, MONGODB_PATH = 'mongodb://127.0.0.1:27017/mestodb' } = process.env;
-
-if (!process.env.JWT_SECRET) {
-  process.env.JWT_SECRET = 'some-secret-key';
-}
 
 const app = express();
 
@@ -30,7 +33,32 @@ mongoose.connect(MONGODB_PATH, {
   useNewUrlParser: true,
 });
 
+app.use((req, res, next) => {
+  const { origin } = req.headers;
+  const { method } = req;
+  const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
+  const requestHeaders = req.headers['access-control-request-headers'];
+
+  if (allowedCors.includes(origin)) {
+    res.header('Access-Control-Allow-Origin', origin);
+  }
+
+  if (method === 'OPTIONS') {
+    res.header('Access-Control-Allow-Methods', DEFAULT_ALLOWED_METHODS);
+    res.header('Access-Control-Allow-Headers', requestHeaders);
+    res.end();
+  }
+
+  next();
+});
+
 app.use(requestLogger);
+
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
 
 app.post('/signin', signInValidation, login);
 app.post('/signup', signUpValidation, createUser);
@@ -43,8 +71,6 @@ app.use('/cards', cardRouter);
 app.use((req, res, next) => {
   next(new NotFoundError('Страница не найдена'));
 });
-
-app.use(cors);
 
 app.use(errorLogger);
 
