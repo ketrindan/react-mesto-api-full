@@ -19,7 +19,7 @@ class Api {
     return fetch(`${this._baseUrl}/users/me`, {
       headers: {
         ...this._headers,
-        "Authorization" : `Bearer ${token}`,
+        'Authorization' : `Bearer ${token}`,
       },
     })
     .then(res => this._serverResponse(res))
@@ -30,7 +30,7 @@ class Api {
     return fetch(`${this._baseUrl}/cards`, {
       headers: {
         ...this._headers,
-        "Authorization" : `Bearer ${token}`,
+        'Authorization' : `Bearer ${token}`,
       },
     })
     .then(res => this._serverResponse(res))
@@ -42,7 +42,7 @@ class Api {
       {method: 'PATCH',
       headers: {
         ...this._headers,
-        "Authorization" : `Bearer ${token}`,
+        'Authorization' : `Bearer ${token}`,
       },
       body: JSON.stringify({name: data.name, about: data.job})
     })
@@ -55,7 +55,7 @@ class Api {
       {method: 'POST',
       headers: {
         ...this._headers,
-        "Authorization" : `Bearer ${token}`,
+        'Authorization' : `Bearer ${token}`,
       },
       body: JSON.stringify({name: data.place, link: data.link})
     })
@@ -68,7 +68,7 @@ class Api {
       {method: 'DELETE',
       headers: {
         ...this._headers,
-        "Authorization" : `Bearer ${token}`,
+        'Authorization' : `Bearer ${token}`,
       },
     })
     .then(res => this._serverResponse(res))
@@ -80,7 +80,7 @@ class Api {
       {method: 'PUT',
       headers: {
         ...this._headers,
-        "Authorization" : `Bearer ${token}`,
+        'Authorization' : `Bearer ${token}`,
       },
     })
     .then(res => this._serverResponse(res))
@@ -92,7 +92,7 @@ class Api {
       {method: 'DELETE',
       headers: {
         ...this._headers,
-        "Authorization" : `Bearer ${token}`,
+        'Authorization' : `Bearer ${token}`,
       },
     })
     .then(res => this._serverResponse(res))
@@ -113,7 +113,7 @@ class Api {
     {method: 'PATCH',
     headers: {
       ...this._headers,
-      "Authorization" : `Bearer ${token}`,
+      'Authorization' : `Bearer ${token}`,
     },
     body: JSON.stringify({avatar: data.avatar})
     })

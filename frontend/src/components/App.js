@@ -155,8 +155,8 @@ function App() {
   }
 
   useEffect(() => {
+    const token = localStorage.getItem('token');
     if(isLoggedIn) {
-      const token = localStorage.getItem('token');
       Promise.all([api.getUserData(token), api.getCards(token)])
       .then(([userData, cardsdata]) => {
         setCurrentUser(userData);
