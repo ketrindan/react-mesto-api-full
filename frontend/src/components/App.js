@@ -204,7 +204,7 @@ function App() {
       .then((data) => {
         if (data) {
           setLoggedIn(true);
-          setUserEmail(data.data.email);
+          setUserEmail(data.email);
           history.push('/');
         }
       })

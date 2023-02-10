@@ -54,7 +54,7 @@ module.exports.deleteCard = (req, res, next) => {
 module.exports.likeCard = (req, res, next) => {
   Card.findByIdAndUpdate(
     req.params.cardId,
-    { $addToSet: { likes: req.user.cardId } },
+    { $addToSet: { likes: req.user._id } },
     { new: true },
   ).populate(['owner', 'likes'])
     .then((card) => {
@@ -75,7 +75,7 @@ module.exports.likeCard = (req, res, next) => {
 module.exports.dislikeCard = (req, res, next) => {
   Card.findByIdAndUpdate(
     req.params.cardId,
-    { $pull: { likes: req.user.cardId } },
+    { $pull: { likes: req.user._id } },
     { new: true },
   ).populate(['owner', 'likes'])
     .then((card) => {
