@@ -16,7 +16,7 @@ function AddPlacePopup(props) {
 	function handleSubmit(e) {
 		e.preventDefault();
 
-		props.onAddPlace(place, link);
+		props.onAddPlace({place: place, link: link});
 	}
 
   useEffect(() => {
