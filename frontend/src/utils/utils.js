@@ -1,7 +1,6 @@
 export const apiConfig = {
   baseUrl: 'http://api.mesto.ketrindan.nomoredomainsclub.ru',
   headers: {
-    authorization: 'Bearer ' + localStorage.getItem('token'),
     'Content-Type': 'application/json',
   }
 }

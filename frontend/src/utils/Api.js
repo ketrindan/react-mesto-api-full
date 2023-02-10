@@ -15,79 +15,107 @@ class Api {
     return Promise.reject(new Error(`Ошибка: ${res.status}`))
   }
 
-  getUserData() {
-    return fetch(`${this._baseUrl}/users/me`, {headers: this._headers})
+  getUserData(token) {
+    return fetch(`${this._baseUrl}/users/me`, {
+      headers: {
+        ...this._headers,
+        "Authorization" : `Bearer ${token}`,
+      },
+    })
     .then(res => this._serverResponse(res))
   }
 
 
-  getCards() {
-    return fetch(`${this._baseUrl}/cards`, {headers: this._headers})
+  getCards(token) {
+    return fetch(`${this._baseUrl}/cards`, {
+      headers: {
+        ...this._headers,
+        "Authorization" : `Bearer ${token}`,
+      },
+    })
     .then(res => this._serverResponse(res))
   }
 
 
-  setUserData(name, job) {
+  setUserData(data, token) {
     return fetch(`${this._baseUrl}/users/me`,
       {method: 'PATCH',
-      headers: this._headers,
-      body: JSON.stringify({name: name, about: job})
+      headers: {
+        ...this._headers,
+        "Authorization" : `Bearer ${token}`,
+      },
+      body: JSON.stringify({name: data.name, about: data.job})
     })
     .then(res => this._serverResponse(res))
   }
 
 
-  addNewCard(place, link) {
+  addNewCard(data, token) {
     return fetch(`${this._baseUrl}/cards`,
       {method: 'POST',
-      headers: this._headers,
-      body: JSON.stringify({name: place, link: link})
+      headers: {
+        ...this._headers,
+        "Authorization" : `Bearer ${token}`,
+      },
+      body: JSON.stringify({name: data.place, link: data.link})
     })
     .then(res => this._serverResponse(res))
   }
 
 
-  deleteCard(cardId) {
+  deleteCard(cardId, token) {
     return fetch(`${this._baseUrl}/cards/${cardId}`,
       {method: 'DELETE',
-      headers: this._headers,
+      headers: {
+        ...this._headers,
+        "Authorization" : `Bearer ${token}`,
+      },
     })
     .then(res => this._serverResponse(res))
   }
 
 
-  _putLike(cardId) {
+  _putLike(cardId, token) {
     return fetch(`${this._baseUrl}/cards/${cardId}/likes`,
       {method: 'PUT',
-      headers: this._headers,
+      headers: {
+        ...this._headers,
+        "Authorization" : `Bearer ${token}`,
+      },
     })
     .then(res => this._serverResponse(res))
   }
 
 
-  _deleteLike(cardId) {
+  _deleteLike(cardId, token) {
     return fetch(`${this._baseUrl}/cards/${cardId}/likes`,
       {method: 'DELETE',
-      headers: this._headers,
+      headers: {
+        ...this._headers,
+        "Authorization" : `Bearer ${token}`,
+      },
     })
     .then(res => this._serverResponse(res))
   }
 
 
-  changeLikeCardStatus(cardId, isLiked) {
+  changeLikeCardStatus(cardId, isLiked, token) {
     if (isLiked) {
-      return this._deleteLike(cardId)
+      return this._deleteLike(cardId, token)
     } else {
-      return this._putLike(cardId)
+      return this._putLike(cardId, token)
     }
   }
 
 
-  changeAvatar(avatar) {
+  changeAvatar(data, token) {
     return fetch(`${this._baseUrl}/users/me/avatar`,
     {method: 'PATCH',
-    headers: this._headers,
-    body: JSON.stringify({avatar: avatar})
+    headers: {
+      ...this._headers,
+      "Authorization" : `Bearer ${token}`,
+    },
+    body: JSON.stringify({avatar: data.avatar})
     })
     .then(res => this._serverResponse(res))
   }

@@ -73,9 +73,11 @@ function App() {
     setInfoToolTipOpen(false);
   }
 
-  function handleUpdateUser(newName, newJob) {
+  function handleUpdateUser(newInfo) {
     setLoading(true);
-    api.setUserData(newName, newJob)
+    const token = localStorage.getItem('token');
+
+    api.setUserData(newInfo, token)
     .then((newUserData) => {
       setCurrentUser(newUserData);
       closeAllPopups();
@@ -88,9 +90,11 @@ function App() {
     })
   } 
 
-  function handleUpdateAvatar(newAvatar) {
+  function handleUpdateAvatar(newInfo) {
     setLoading(true);
-    api.changeAvatar(newAvatar)
+    const token = localStorage.getItem('token');
+
+    api.changeAvatar(newInfo, token)
     .then((newUserData) => {
       setCurrentUser(newUserData);
       closeAllPopups();
@@ -103,9 +107,11 @@ function App() {
     })
   }
 
-  function handleAddPlaceSubmit(newPlace, newLink) {
+  function handleAddPlaceSubmit(newData) {
     setLoading(true);
-    api.addNewCard(newPlace, newLink)
+    const token = localStorage.getItem('token');
+
+    api.addNewCard(newData, token)
     .then((newCard) => {
       setCards([newCard, ...cards]);
       closeAllPopups();
@@ -120,8 +126,9 @@ function App() {
 
   function handleCardLike(card) {
     const isLiked = card.likes.some(i => i._id === currentUser._id);
+    const token = localStorage.getItem('token');
     
-    api.changeLikeCardStatus(card._id, isLiked)
+    api.changeLikeCardStatus(card._id, isLiked, token)
     .then((newCard) => {
       setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
     })
@@ -132,7 +139,9 @@ function App() {
 
   function handleCardDelete(cardId) {
     setLoading(true);
-    api.deleteCard(cardId)
+    const token = localStorage.getItem('token');
+
+    api.deleteCard(cardId, token)
     .then(() => {
       setCards((cards) => cards.filter((c) => c._id !== cardId));
       closeAllPopups();
@@ -147,7 +156,8 @@ function App() {
 
   useEffect(() => {
     if(isLoggedIn) {
-      Promise.all([api.getUserData(), api.getCards()])
+      const token = localStorage.getItem('token');
+      Promise.all([api.getUserData(token), api.getCards(token)])
       .then(([userData, cardsdata]) => {
         setCurrentUser(userData);
         setCards(cardsdata);
@@ -207,6 +217,8 @@ function App() {
   function handleSignOut() {
     setLoggedIn(false);
     localStorage.removeItem('token');
+    setCurrentUser({});
+    history.push('/sign-in');
   }
 
   useEffect(() => {
