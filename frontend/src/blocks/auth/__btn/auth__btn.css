@@ -10,11 +10,13 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 22px;
+  margin-top: 130px;
 }
 
 @media screen and (max-width: 425px) {
   .auth__btn {
     font-size: 16px;
     line-height: 19px;
+    margin-top: 90px;
   }
 }
