@@ -14,7 +14,7 @@ function Login(props) {
   return (
     <div className="login auth">
       <h1 className="login__title auth__title">Вход</h1>
-      <form onSubmit={handleSubmit} className="login__form auth__form">
+      <form onSubmit={handleSubmit} className="login__form auth__form" noValidate>
         <input className="login__input auth__input" id="email" name="email" type="email" required placeholder="Email" value={values.email} onChange={onChange} />
         <span className={"form__input-error place-input-error " + (errors.email ? "form__input-error_active" : "")}>{errors.email}</span>
         <input className="login__input auth__input" id="password" name="password" type="password" required minLength="8" placeholder="Пароль" value={values.password} onChange={onChange} />
