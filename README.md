@@ -46,4 +46,4 @@
   
 ### **Демо**
 Frontend  https://mesto.ketrindan.nomoredomainsclub.ru \
-Backend  https://api.mesto.ketrindan.nomoredomainsclub.ru \
+Backend  https://api.mesto.ketrindan.nomoredomainsclub.ru
