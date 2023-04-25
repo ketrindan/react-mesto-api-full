@@ -53,7 +53,7 @@ Backend  https://api.mesto.ketrindan.nomoredomainsclub.ru
 ```
 git clone git@github.com:ketrindan/react-mesto-api-full.git
 ```
-2. Установить пакеты
+2. Установить пакеты \
 для фронтенда
 ```
 cd react-mesto-api-full
