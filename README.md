@@ -71,7 +71,7 @@ npm install
 3. Запустите части приложения на разных портах (измените значение `baseUrl` в `frontend/src/utils/utils.js` на адрес локального порта, на котором запущен бэкенд - http://localhost:3000.
 При необходимости добавляйте нужные адреса вида 'http://localhost:PORT' (где PORT - порт, на котором запущен фронтенд) в список `allowedCors` в `backend/app.js`.
 
-# Фронтенд
+#### Фронтенд
 
 `npm start` - запуск проекта в режиме разработки
 
@@ -84,7 +84,7 @@ npm install
 
 `npm run deploy` - деплой проекта на Github Pages
 
-# Бэкенд
+#### Бэкенд
 `npm run start` — запускает сервер   
 `npm run dev` — запускает сервер с hot-reload
 
