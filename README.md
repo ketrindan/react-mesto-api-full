@@ -47,3 +47,45 @@
 ### **Демо**
 Frontend  https://mesto.ketrindan.nomoredomainsclub.ru \
 Backend  https://api.mesto.ketrindan.nomoredomainsclub.ru
+
+### **Инструкция по установке и сборке**
+1. Клонировать репозиторий
+```
+git clone git@github.com:ketrindan/react-mesto-api-full.git
+```
+2. Установить пакеты
+для фронтенда
+```
+cd react-mesto-api-full
+cd frontend
+npm install
+```
+для бэкенда
+```
+cd react-mesto-api-full
+cd backend
+npm install
+```
+
+3. Запустите части приложения на разных портах (измените значение `baseUrl` в `frontend/src/utils/utils.js` на адрес локального порта, на котором запущен бэкенд - http://localhost:3000.
+При необходимости добавляйте нужные адреса вида 'http://localhost:PORT' (где PORT - порт, на котором запущен фронтенд) в список `allowedCors` в `backend/app.js`.
+
+# Фронтенд
+
+`npm start` - запуск проекта в режиме разработки
+
+Чтобы открыть проект в браузере, перейдите на [http://localhost:3000](http://localhost:3000).
+
+При сохранении изменений страница автоматически перезагружается.
+
+
+`npm run build` - запуск сборки проекта, проект будет собран в папку `build`
+
+`npm run deploy` - деплой проекта на Github Pages
+
+# Бэкенд
+`npm run start` — запускает сервер   
+`npm run dev` — запускает сервер с hot-reload
+
+### **Планы по доработке**
+* доработать структуру переменных окружения
